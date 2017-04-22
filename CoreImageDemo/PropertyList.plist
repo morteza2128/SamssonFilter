@@ -4,17 +4,87 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>Blur</string>
+		<string>Sharp</string>
 		<key>coreImageName</key>
-		<string>COBlur</string>
+		<string>CIUnsharpMask</string>
 		<key>parameters</key>
 		<array>
 			<dict>
+				<key>coreImageName</key>
+				<string>inputIntensity</string>
 				<key>name</key>
-				<string>percent</string>
+				<string>Intensity</string>
 				<key>min</key>
 				<integer>0</integer>
 				<key>max</key>
+				<integer>10</integer>
+				<key>default</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sepia Tone</string>
+		<key>coreImageName</key>
+		<string>CISepiaTone</string>
+		<key>parameters</key>
+		<array>
+			<dict>
+				<key>coreImageName</key>
+				<string>inputIntensity</string>
+				<key>name</key>
+				<string>Intensity</string>
+				<key>min</key>
+				<integer>0</integer>
+				<key>max</key>
+				<integer>10</integer>
+				<key>default</key>
+				<integer>0</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Color Control</string>
+		<key>coreImageName</key>
+		<string>CIColorControls</string>
+		<key>parameters</key>
+		<array>
+			<dict>
+				<key>coreImageName</key>
+				<string>inputSaturation</string>
+				<key>name</key>
+				<string>Saturation</string>
+				<key>min</key>
+				<integer>1</integer>
+				<key>max</key>
+				<integer>2</integer>
+				<key>default</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>coreImageName</key>
+				<string>inputBrightness</string>
+				<key>name</key>
+				<string>Brightness</string>
+				<key>min</key>
+				<integer>-1</integer>
+				<key>max</key>
+				<real>0.5</real>
+				<key>default</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>coreImageName</key>
+				<string>inputContrast</string>
+				<key>name</key>
+				<string>Contrast</string>
+				<key>min</key>
+				<integer>0</integer>
+				<key>max</key>
+				<integer>4</integer>
+				<key>default</key>
 				<integer>0</integer>
 			</dict>
 		</array>

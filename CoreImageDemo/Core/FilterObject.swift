@@ -15,6 +15,8 @@ class FilterObject: NSObject {
     var coreImageName : String?
     var parametrsCount : NSNumber?
     var parametrs : Array<ParametersObject>?
+    var isUsed :Bool?
+    
     
     init(jsonDict: [String : Any] ) {
         
