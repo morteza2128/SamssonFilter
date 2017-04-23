@@ -31,7 +31,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rig-nO-DBA">
                                 <rect key="frame" x="0.0" y="388" width="375" height="190"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQT-OV-8Rz">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="bQT-OV-8Rz">
                                         <rect key="frame" x="6" y="33" width="356" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="352" id="Fea-hF-e9m"/>
@@ -41,7 +41,7 @@
                                             <action selector="sliderValueChanged:" destination="Kef-wn-u9b" eventType="valueChanged" id="srW-8c-RHz"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9h-u3-XLG">
+                                    <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="J9h-u3-XLG">
                                         <rect key="frame" x="6" y="93" width="356" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="352" id="wCb-zA-BGS"/>
@@ -51,7 +51,7 @@
                                             <action selector="sliderValueChanged:" destination="Kef-wn-u9b" eventType="valueChanged" id="3ZN-s5-F0I"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-sk-en1">
+                                    <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-sk-en1">
                                         <rect key="frame" x="6" y="152" width="356" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Ld1-vq-BT3"/>

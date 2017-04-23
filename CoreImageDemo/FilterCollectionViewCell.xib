@@ -17,22 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="152" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leU-jS-Uuo">
-                        <rect key="frame" x="11" y="28" width="130" height="29"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="130" id="6JG-QF-Ltp"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29" id="Uwz-Vm-jtf"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAw-mW-EqX">
-                        <rect key="frame" x="11" y="78" width="130" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="130" id="Juk-C0-RyT"/>
-                            <constraint firstAttribute="height" constant="21" id="Vge-CM-7nS"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leU-jS-Uuo">
+                        <rect key="frame" x="11" y="13" width="130" height="99"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,19 +27,16 @@
             </view>
             <color key="backgroundColor" red="0.98039215690000003" green="0.70588235290000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="eAw-mW-EqX" firstAttribute="top" secondItem="leU-jS-Uuo" secondAttribute="bottom" constant="21" id="7QQ-aJ-n4K"/>
-                <constraint firstItem="leU-jS-Uuo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="92Q-i3-tyr"/>
-                <constraint firstItem="leU-jS-Uuo" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-20" id="EbZ-ej-4Wi"/>
-                <constraint firstItem="eAw-mW-EqX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="WRP-aA-sv0"/>
-                <constraint firstAttribute="trailing" secondItem="leU-jS-Uuo" secondAttribute="trailing" constant="11" id="oNQ-qa-o4r"/>
-                <constraint firstAttribute="trailing" secondItem="eAw-mW-EqX" secondAttribute="trailing" constant="11" id="sAO-g4-4i8"/>
+                <constraint firstAttribute="trailing" secondItem="leU-jS-Uuo" secondAttribute="trailing" constant="11" id="4gc-ur-bhR"/>
+                <constraint firstItem="leU-jS-Uuo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="53W-Ui-u5D"/>
+                <constraint firstItem="leU-jS-Uuo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="13" id="Mxo-2N-Dmh"/>
+                <constraint firstAttribute="bottom" secondItem="leU-jS-Uuo" secondAttribute="bottom" constant="13" id="PKX-WF-hjT"/>
             </constraints>
             <size key="customSize" width="152" height="125"/>
             <connections>
                 <outlet property="filterNameLabel" destination="leU-jS-Uuo" id="FvF-Kd-Aoj"/>
-                <outlet property="valueLable" destination="eAw-mW-EqX" id="CZ6-la-Wjp"/>
             </connections>
-            <point key="canvasLocation" x="-142" y="-9"/>
+            <point key="canvasLocation" x="-142" y="-9.5"/>
         </collectionViewCell>
     </objects>
 </document>

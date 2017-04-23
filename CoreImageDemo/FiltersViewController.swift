@@ -12,8 +12,12 @@ import CoreImage
 
 class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
-    var originalImage: UIImage!
+    var filterString :String?
+    var devFilterString :String?
     var isFiltering = false
+
+    //MARK: - image states
+    var originalImage: UIImage!
     var tempImage: UIImage!{
         
         didSet{
@@ -27,33 +31,29 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
     }
     
+    
+    //MARK: - UI Properties
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var slider1: UISlider!
+    @IBOutlet weak var slider2: UISlider!
+    @IBOutlet weak var slider3: UISlider!
+    @IBOutlet weak var parameter1titleLabel: UILabel!
+    @IBOutlet weak var parameter2titleLabel: UILabel!
+    @IBOutlet weak var parameter3titleLabel: UILabel!
+    
+    //MARK: - Filter Properties
+    let openGLContext = EAGLContext(api: .openGLES2)
+    var context  : CIContext?
+    var ciFilter : CIFilter?
     var currentFilter : FilterObject?
-    
-    
     var filters : [FilterObject]?
     {
         didSet{
             self.collectionView.reloadData()
         }
-    
+        
     }
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    var imagePicker = UIImagePickerController()
-    
-    @IBOutlet weak var slider1: UISlider!
-    @IBOutlet weak var slider2: UISlider!
-    @IBOutlet weak var slider3: UISlider!
-    
-    @IBOutlet weak var parameter1titleLabel: UILabel!
-    @IBOutlet weak var parameter2titleLabel: UILabel!
-    @IBOutlet weak var parameter3titleLabel: UILabel!
-    
-    let openGLContext = EAGLContext(api: .openGLES2)
-    var context  : CIContext?
-    var ciFilter : CIFilter?
     
     override func viewDidLoad() {
         
@@ -63,11 +63,14 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
         filters = FilterCore.sharedInstance.parseFilters()
         context = CIContext(eaglContext: openGLContext!)
         
-
+        
         imageView.layer.masksToBounds = true;
         
         self.restFilters()
     }
+    
+    
+    //MARK: - CollectionView
     
     func initCollectionView() {
         
@@ -76,13 +79,7 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             layout.scrollDirection = .horizontal
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    
-    //MARK: - CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
@@ -120,6 +117,10 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             
             ciFilter = CIFilter(name: (currentFilter?.coreImageName)!)
             ciFilter?.setValue(coreImage, forKey: kCIInputImageKey)
+            
+            let selectedCell:UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
+            selectedCell.contentView.backgroundColor = UIColor(red: 102/256, green: 255/256, blue: 255/256, alpha: 0.66)
+            
         }else{
             
             let alert = UIAlertController.init(title: nil, message: "Select Image first, you want filter nothing!!!", preferredStyle: .alert)
@@ -130,8 +131,13 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
-       
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        let cellToDeselect:UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath)!
+        cellToDeselect.contentView.backgroundColor = UIColor(red: 250/256, green: 180/256, blue: 33/256, alpha: 1.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
@@ -157,6 +163,7 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     func restFilters()  {
         
+        filterString = ""
         filteredImage = originalImage
         
         self.slider1.value        = 0
@@ -164,14 +171,25 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.slider3.value        = 0
         
         isFiltering = false
-        slider1.isEnabled = true
-        slider2.isEnabled = true
-        slider3.isEnabled = true
+        slider1.isEnabled = false
+        slider2.isEnabled = false
+        slider3.isEnabled = false
+        
+        self.parameter1titleLabel.text = "-"
+        self.parameter2titleLabel.text = "-"
+        self.parameter3titleLabel.text = "-"
+        
+        for indexPath in self.collectionView.indexPathsForVisibleItems {
+            
+            self.collectionView.deselectItem(at: indexPath, animated: false)
+        }
     }
     
     @IBAction func confrimFilterButtonClicked(_ sender: UIButton) {
         
         filteredImage = tempImage
+        makeFilterString()
+
     }
     
     @IBAction func cancelFilterButtonClicked(_ sender: UIButton) {
@@ -278,12 +296,15 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             switch sender.tag {
             case 0:
                 ciFilter?.setValue(sender.value, forKey: (currentFilter?.parametrs?[0].coreImageName)!)
+                currentFilter?.parametrs?[0].defaultV = sender.value
                 
             case 1:
                 ciFilter?.setValue(sender.value, forKey: (currentFilter?.parametrs?[1].coreImageName)!)
+                currentFilter?.parametrs?[1].defaultV = sender.value
                 
             case 2:
                 ciFilter?.setValue(sender.value, forKey: (currentFilter?.parametrs?[2].coreImageName)!)
+                currentFilter?.parametrs?[2].defaultV = sender.value
             default: break
                 
             }
@@ -306,8 +327,8 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBAction func selectImageButtonClicked(_ sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            print("Button capture")
             
+            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum;
             imagePicker.allowsEditing = false
@@ -332,8 +353,25 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBAction func shareButtonclicked(_ sender: UIButton) {
         
-        let shareVC: UIActivityViewController = UIActivityViewController(activityItems: ["Original",(originalImage),"Filtered",(filteredImage)], applicationActivities: nil)
+        let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [(originalImage),(filteredImage), self.filterString!], applicationActivities: nil)
         self.present(shareVC, animated: true, completion: nil)
+    }
+    
+    func makeFilterString() {
+        
+        var str = "\nFilterName:\(self.currentFilter!.name!)\n"
+        
+        if self.currentFilter?.parametrs != nil {
+        
+            for parametr in self.currentFilter!.parametrs! {
+                
+                let paStr = "\t\t\t\tParamete=r Name:\(parametr.name!)(\(parametr.defaultV!))\n"
+                str += paStr
+            }
+        }
+        
+        self.filterString?.append(str)
+        
     }
     
 
