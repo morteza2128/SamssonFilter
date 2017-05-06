@@ -1,12 +1,15 @@
 PODS:
   - SCRecorder (2.7.0)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - SCRecorder (~> 2.7)
+  - SCRecorder
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   SCRecorder: bbb521dbc222908876ec9cd9156bbc8a893bed44
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: bc332e25a4be530ed9b57bb06fa1238e3bf5e19c
+PODFILE CHECKSUM: a774e258d28363660c0b4dd6ebb7ab54304fa4e3
 
 COCOAPODS: 1.2.1

@@ -572,16 +572,20 @@ static CGContextRef SCCreateContextFromPixelBuffer(CVPixelBufferRef pixelBuffer)
         _videoInput = [self addWriter:AVMediaTypeVideo withSettings:videoSettings];
         if (_videoConfiguration.keepInputAffineTransform) {
             _videoInput.transform = videoTrack.preferredTransform;
+            NSLog(@"_videoConfiguration keepInputAffineTransform");
         } else {
             _videoInput.transform = _videoConfiguration.affineTransform;
+            NSLog(@"_videoConfiguration Nooooooot keepInputAffineTransform");
         }
 
         // Output
         AVVideoComposition *videoComposition = self.videoConfiguration.composition;
         if (videoComposition == nil) {
             _inputBufferSize = videoTrack.naturalSize;
+            NSLog(@"keepInputAffineTransform");
         } else {
             _inputBufferSize = videoComposition.renderSize;
+            NSLog(@"Nooooooot keepInputAffineTransform");
         }
 
         CGSize outputBufferSize = _inputBufferSize;
@@ -639,6 +643,8 @@ static CGContextRef SCCreateContextFromPixelBuffer(CVPixelBufferRef pixelBuffer)
 }
 
 - (void)exportAsynchronouslyWithCompletionHandler:(void (^)())completionHandler {
+    
+    NSLog(@"start");
     _cancelled = NO;
     _nextAllowedVideoFrame = kCMTimeZero;
     NSError *error = nil;

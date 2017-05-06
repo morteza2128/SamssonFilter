@@ -6,6 +6,7 @@ target 'CoreImageDemo' do
   use_frameworks!
 
   # Pods for CoreImageDemo
-  pod 'SCRecorder', '~> 2.7'
+  pod 'SCRecorder'
+  pod 'SVProgressHUD'
 
 end
