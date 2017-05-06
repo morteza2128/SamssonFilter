@@ -63,9 +63,7 @@ class VideoFilterViewController: UIViewController,UIImagePickerControllerDelegat
         recordSession = SCRecordSession()
         player = SCPlayer()
         
-        filterImView.contentMode = .scaleAspectFit;
-//        filterImView.filter = SCFilter.init(ciFilterName: "CIPhotoEffectInstant")
-//        currentFilter = SCFilter.init(ciFilterName: "CIPhotoEffectInstant")
+        filterImView.scaleAndResizeCIImageAutomatically = true;
         
         player?.scImageView = self.filterImView;
         player?.loopEnabled = true;
@@ -383,31 +381,37 @@ class VideoFilterViewController: UIViewController,UIImagePickerControllerDelegat
 
     @IBAction func shareButtonClicked(_ sender: UIButton) {
         
-        SVProgressHUD.setDefaultMaskType(.gradient)
-        SVProgressHUD.show(withStatus: "Filtering...")
-        filterVideo()
+        let asset = recordSession?.assetRepresentingSegments()
+
+        if (asset?.tracks(withMediaType: AVMediaTypeVideo).first) != nil {
+        
+            filterVideo()
+            
+        }
+        else{
+            
+            let alert = UIAlertController.init(title: nil, message: "Seriously men ?!?!?  select video first, OK dude!!!", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { (UIAlertAction) in
+                
+            })
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
 
     
     func makeFilterString() {
         
-//        var str = "\nFilterName:\(self.currentFilter!.name!)\n"
-//        
-//        if self.currentFilter?.parametrs != nil {
-//            
-//            for parametr in self.currentFilter!.parametrs! {
-//                
-//                let paStr = "\t\t\t\tParamete=r Name:\(parametr.name!)(\(parametr.defaultV!))\n"
-//                str += paStr
-//            }
-//        }
-//        
-//        self.filterString?.append(str)
-        
     }
 
    
     func filterVideo()  {
+        
+        SVProgressHUD.show(withStatus: "Filtering...")
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+
         
         let asset = recordSession?.assetRepresentingSegments()
         
@@ -493,7 +497,6 @@ class VideoFilterViewController: UIViewController,UIImagePickerControllerDelegat
                 
                 print("Export worked")
                 SVProgressHUD.showSuccess(withStatus: "Done!")
-                UIApplication.shared.beginIgnoringInteractionEvents()
                 
                 let saveToCameraRoll = SCSaveToCameraRollOperation.init()
                 saveToCameraRoll.saveVideoURL(exportSession.outputUrl, completion: nil)
@@ -504,6 +507,8 @@ class VideoFilterViewController: UIViewController,UIImagePickerControllerDelegat
                 SVProgressHUD.showError(withStatus: "Can't Save!")
                 print("Export fucked")
             }
+            
+            
         }
         
         

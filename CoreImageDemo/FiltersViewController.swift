@@ -187,8 +187,20 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBAction func confrimFilterButtonClicked(_ sender: UIButton) {
         
-        filteredImage = tempImage
-        makeFilterString()
+        if(currentFilter != nil){
+            filteredImage = tempImage
+            makeFilterString()
+        }
+        else{
+            
+            let alert = UIAlertController.init(title: nil, message: "First select filter then click on me, OK dude????", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { (UIAlertAction) in
+                
+            })
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
 
     }
     
@@ -353,8 +365,22 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBAction func shareButtonclicked(_ sender: UIButton) {
         
-        let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [(originalImage),(filteredImage), self.filterString!], applicationActivities: nil)
-        self.present(shareVC, animated: true, completion: nil)
+        if (self.filterString?.characters.count)! > 0 {
+        
+            let shareVC: UIActivityViewController = UIActivityViewController(activityItems: [(originalImage),(filteredImage), self.filterString!], applicationActivities: nil)
+            self.present(shareVC, animated: true, completion: nil)
+        }
+        else{
+            
+            let alert = UIAlertController.init(title: nil, message: "Share what?!?! first select image, filter image and then click on ✅ at right side of ME, OK dude???", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { (UIAlertAction) in
+                
+            })
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func makeFilterString() {
