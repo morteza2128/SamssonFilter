@@ -10,10 +10,10 @@
 		727D3E281EA4F771000F71CB /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D3E261EA4F771000F71CB /* FilterCollectionViewCell.swift */; };
 		727D3E291EA4F771000F71CB /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727D3E271EA4F771000F71CB /* FilterCollectionViewCell.xib */; };
 		727D3E2B1EA4F997000F71CB /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D3E2A1EA4F997000F71CB /* FiltersViewController.swift */; };
-		727D3E2D1EA5046A000F71CB /* PropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 727D3E2C1EA5046A000F71CB /* PropertyList.plist */; };
 		727D3E2F1EA5066B000F71CB /* FilterCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D3E2E1EA5066B000F71CB /* FilterCore.swift */; };
 		727D3E311EA5067D000F71CB /* FilterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D3E301EA5067D000F71CB /* FilterObject.swift */; };
 		727D3E331EA506D3000F71CB /* ParametersObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D3E321EA506D3000F71CB /* ParametersObject.swift */; };
+		72BE41EB1EDE995000B8AA5A /* Filters PropertyList v0.1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72BE41EA1EDE995000B8AA5A /* Filters PropertyList v0.1.plist */; };
 		72C3DDF51EACAE66002CD6EC /* VideoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C3DDF41EACAE66002CD6EC /* VideoFilterViewController.swift */; };
 		D16ED09C6E74D811E908BBE5 /* Pods_CoreImageDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D897E6076B44C280B60F1BDA /* Pods_CoreImageDemo.framework */; };
 		F40FBB801C5F1D3A00694F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FBB7F1C5F1D3A00694F59 /* AppDelegate.swift */; };
@@ -28,10 +28,10 @@
 		727D3E261EA4F771000F71CB /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		727D3E271EA4F771000F71CB /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		727D3E2A1EA4F997000F71CB /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
-		727D3E2C1EA5046A000F71CB /* PropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PropertyList.plist; sourceTree = "<group>"; };
 		727D3E2E1EA5066B000F71CB /* FilterCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterCore.swift; path = Core/FilterCore.swift; sourceTree = "<group>"; };
 		727D3E301EA5067D000F71CB /* FilterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterObject.swift; path = Core/FilterObject.swift; sourceTree = "<group>"; };
 		727D3E321EA506D3000F71CB /* ParametersObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParametersObject.swift; path = Core/ParametersObject.swift; sourceTree = "<group>"; };
+		72BE41EA1EDE995000B8AA5A /* Filters PropertyList v0.1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Filters PropertyList v0.1.plist"; sourceTree = "<group>"; };
 		72C3DDF41EACAE66002CD6EC /* VideoFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFilterViewController.swift; sourceTree = "<group>"; };
 		802387DA4474A8903D584CA1 /* Pods-CoreImageDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreImageDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreImageDemo/Pods-CoreImageDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D897E6076B44C280B60F1BDA /* Pods_CoreImageDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreImageDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,10 +104,10 @@
 				F40FBB861C5F1D3B00694F59 /* Assets.xcassets */,
 				F40FBB881C5F1D3B00694F59 /* LaunchScreen.storyboard */,
 				F40FBB8B1C5F1D3B00694F59 /* Info.plist */,
-				727D3E2C1EA5046A000F71CB /* PropertyList.plist */,
 				727D3E2E1EA5066B000F71CB /* FilterCore.swift */,
 				727D3E301EA5067D000F71CB /* FilterObject.swift */,
 				727D3E321EA506D3000F71CB /* ParametersObject.swift */,
+				72BE41EA1EDE995000B8AA5A /* Filters PropertyList v0.1.plist */,
 			);
 			path = CoreImageDemo;
 			sourceTree = "<group>";
@@ -175,10 +175,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72BE41EB1EDE995000B8AA5A /* Filters PropertyList v0.1.plist in Resources */,
 				F40FBB8A1C5F1D3B00694F59 /* LaunchScreen.storyboard in Resources */,
 				F40FBB871C5F1D3B00694F59 /* Assets.xcassets in Resources */,
 				727D3E291EA4F771000F71CB /* FilterCollectionViewCell.xib in Resources */,
-				727D3E2D1EA5046A000F71CB /* PropertyList.plist in Resources */,
 				F40FBB851C5F1D3B00694F59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

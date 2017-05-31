@@ -63,7 +63,6 @@ class VideoFilterViewController: UIViewController,UIImagePickerControllerDelegat
         recordSession = SCRecordSession()
         player = SCPlayer()
         
-        filterImView.scaleAndResizeCIImageAutomatically = true;
         
         player?.scImageView = self.filterImView;
         player?.loopEnabled = true;

@@ -95,6 +95,13 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
         let filterObj = filters?[indexPath.row]
         cell.filterNameLabel.text = filterObj?.name
         
+        if filterObj?.name == currentFilter?.name{
+            cell.contentView.backgroundColor = UIColor(red: 102/256, green: 255/256, blue: 255/256, alpha: 0.66)
+        }
+        else{
+            cell.contentView.backgroundColor = UIColor(red: 250/256, green: 180/256, blue: 33/256, alpha: 1.0)
+        }
+        
         return cell
         
     }
@@ -121,6 +128,11 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             let selectedCell:UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
             selectedCell.contentView.backgroundColor = UIColor(red: 102/256, green: 255/256, blue: 255/256, alpha: 0.66)
             
+            if currentFilter?.parametrs?.count == 0{
+                
+                applySingleFilter();
+            }
+            
         }else{
             
             let alert = UIAlertController.init(title: nil, message: "Select Image first, you want filter nothing!!!", preferredStyle: .alert)
@@ -136,7 +148,11 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
-        let cellToDeselect:UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath)!
+        guard let cellToDeselect:UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath) else{
+            
+            return
+        }
+        
         cellToDeselect.contentView.backgroundColor = UIColor(red: 250/256, green: 180/256, blue: 33/256, alpha: 1.0)
     }
     
@@ -330,6 +346,17 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
                 print("Filter finished")
             }
             
+        }
+    }
+    
+    func applySingleFilter() {
+        
+        if let sepiaOutput = ciFilter?.value(forKey: kCIOutputImageKey) as? CIImage {
+            
+            let output = context?.createCGImage(sepiaOutput, from: sepiaOutput.extent)
+            tempImage = UIImage(cgImage: output! , scale: 1.0, orientation: (filteredImage?.imageOrientation)!)
+            
+            print("Filter finished")
         }
     }
     

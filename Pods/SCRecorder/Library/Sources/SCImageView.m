@@ -50,7 +50,7 @@
 }
 
 - (void)_imageViewCommonInit {
-    _scaleAndResizeCIImageAutomatically = YES;
+    _scaleAndResizeCIImageAutomatically = NO;
     self.preferredCIImageTransform = CGAffineTransformIdentity;
     
     _sampleBufferHolder = [SCSampleBufferHolder new];

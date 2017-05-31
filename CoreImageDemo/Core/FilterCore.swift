@@ -18,7 +18,7 @@ class FilterCore: NSObject {
     {
         
         var piListArr: NSArray?
-        if let path = Bundle.main.path(forResource: "PropertyList", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "Filters PropertyList v0.1", ofType: "plist") {
             piListArr = NSArray(contentsOfFile: path)
         }
         
