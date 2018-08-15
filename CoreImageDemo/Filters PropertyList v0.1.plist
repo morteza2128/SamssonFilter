@@ -186,7 +186,7 @@
 				<key>max</key>
 				<integer>3</integer>
 				<key>min</key>
-				<real>-0.3</real>
+				<integer>-3</integer>
 				<key>name</key>
 				<string>Saturation</string>
 			</dict>

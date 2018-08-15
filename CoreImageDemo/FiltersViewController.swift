@@ -121,6 +121,7 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
             setSlidersWithfilter(filter: currentFilter!)
             
             let coreImage = CIImage(cgImage: (filteredImage?.cgImage)!)
+            CGImage
             
             ciFilter = CIFilter(name: (currentFilter?.coreImageName)!)
             ciFilter?.setValue(coreImage, forKey: kCIInputImageKey)
@@ -418,7 +419,7 @@ class FiltersViewController: UIViewController,UICollectionViewDelegate,UICollect
         
             for parametr in self.currentFilter!.parametrs! {
                 
-                let paStr = "\t\t\t\tParamete=r Name:\(parametr.name!)(\(parametr.defaultV!))\n"
+                let paStr = "\t\t\t\tParameter = Name:\(parametr.name!)(\(parametr.defaultV!))\n"
                 str += paStr
             }
         }
